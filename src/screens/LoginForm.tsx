@@ -1,14 +1,16 @@
-import { StyleSheet, Text, TextInput, Image, View } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, TextInput, Image, View, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { color, style } from '../Constant/Styles'
 import UserInput from '../Componant/UserInput'
 import * as ImagePicker from 'expo-image-picker';
 import { Button } from 'react-native-paper'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SQLite from "expo-sqlite";
 
 
 
 const LoginForm = (props: any) => {
+
   const [firstName, setfirstName] = useState('Ravi')
   const [lastName, setlastName] = useState('Rupapara')
   const [email, setEmail] = useState('Rupapara@gmail.com')
@@ -24,14 +26,64 @@ const LoginForm = (props: any) => {
       quality: 1,
     });
 
-    console.log(result);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri as any);
     }
   };
 
-  console.log(lastName);
+
+
+
+  useEffect(() => {
+  }, [firstName, lastName, email])
+
+  const obj = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+  }
+
+
+  // const db = SQLite.openDatabase("db.db");
+
+  const NextButton = () => {
+    props.navigation.navigate('LoanAmount', { obj })
+
+    // db.transaction(function (tx) {
+    //   tx.executeSql(
+    //     'INSERT INTO table_user (user_name, user_contact, user_address) VALUES (?,?,?)',
+    //     [firstName, lastName, email],
+    //     (tx, results) => {
+    //       console.log('Results', results.rowsAffected);
+    //       if (results.rowsAffected > 0) {
+    //         Alert.alert(
+    //           'Success',
+    //           'You are Registered Successfully',
+    //           [
+    //             {
+    //               text: 'Ok',
+    //               onPress: () => props.navigation.navigate('LoanAmount', { obj }),
+    //             },
+    //           ],
+    //           { cancelable: false }
+    //         );
+    //       } else alert('Registration Failed');
+    //     }
+    //   );
+    // });
+
+  }
+
+
+
+
+
+
+
+
+
+
 
   return (
     <View style={style.container}>
@@ -61,7 +113,7 @@ const LoginForm = (props: any) => {
       </View>
       <View>
         <Button
-          onPress={() => props.navigation.navigate('LoanAmmount')}
+          onPress={NextButton}
           style={{ backgroundColor: color.secondary, margin: 20, }} labelStyle={{ color: color.light, paddingHorizontal: 20, fontSize: 20, padding: 10 }}>Next</Button>
       </View>
     </View>

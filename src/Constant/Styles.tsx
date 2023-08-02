@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from 'react-native-elements';
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -15,7 +16,7 @@ export const style = StyleSheet.create({
   container: {
     padding: 20,
     alignContent: 'center',
-    backgroundColor: color.light,
+    // backgroundColor: color.light,
     flex: 1,
   },
   CashContainer: {
@@ -30,7 +31,8 @@ export const style = StyleSheet.create({
     fontSize: 60,
     fontWeight: '600',
     flex: 1,
-    color: color.dark
+    // color: color.dark
+
   },
   CashInnerContainer: {
     flexDirection: 'row',
@@ -38,7 +40,7 @@ export const style = StyleSheet.create({
     alignItems: 'center'
   },
   btn: {
-    backgroundColor: color.secondary,
+    backgroundColor: colors.primary,
     margin: 20,
   },
   btnText: {
@@ -51,4 +53,29 @@ export const style = StyleSheet.create({
     backgroundColor: color.light, flex: 1, borderTopRightRadius: 20,
     borderBottomRightRadius: 20, paddingHorizontal: 10
   },
+  statusText: { fontSize: 30, fontWeight: '800', alignSelf: 'center' },
+
+  statusTextContainer: {
+    position: 'absolute',
+    backgroundColor: color.dark,
+    width: '100%',
+    height: 40,
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 50,
+    marginLeft: 20,
+    // transform: [{ translateY:  }],
+  },
+
+  userDetailContainer: {
+    width: '100%',
+    padding: 20,
+    backgroundColor: color.primary,
+    borderRadius: 30,
+    marginVertical: 10,
+    // height: 50,
+  },
+  teansctionText: {
+    padding: 5,
+  }
 })
+

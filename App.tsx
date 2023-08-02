@@ -2,40 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './src/Navigation';
-import { MD3LightTheme as DefaultTheme, Provider as PaperProvider, configureFonts } from 'react-native-paper';
+import React from 'react';
+import { AppearanceProvider } from 'react-native-appearance';
 
 
 
-
-const theme = {
-  ...DefaultTheme,
-
-  colors: {
-    ...DefaultTheme,
-
-  },
-
-
-};
 
 export default function App() {
 
 
-  return (
-    <>
-      <PaperProvider >
+    return (
+        // <AppearanceProvider>
 
         <Navigation />
-      </PaperProvider>
-    </>
-  );
+        // </AppearanceProvider>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
